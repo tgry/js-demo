@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>D3 デモ</title>
+
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="d3.min.js"></script>
+
+<script>
+
+window.addEventListener("load", init, false);
+
+// 表示するデータ
+const data = [
+    { num: 8920000, color: "#F4A460", label: "犬" },
+    { num: 9526000, color: "#87CEEB", label: "猫" }
+];
+
+function init() {
+    pie();
+}
+
+// パイチャート作成
+function pie() {
+    // 400x400のcanvas作成
+    const canvas = d3.select("#demo").append("svg").attr("width", 400).attr("height", 400);
+    const g = canvas.append("g").attr("transform", "translate(200, 200)");
+
+    // 内側半径80、外側半径200の円を作成
+    const arc = d3.arc().innerRadius(80).outerRadius(200);
+
+    // パイ用レイアウト作成
+    const pie = d3.pie().value(function(d) { return d.num; });
+
+    // チャート作成
+    const arcs = g.selectAll(".arc").data(pie(data)).enter().append("g").attr("class", "arc");
+
+    // 色で塗りつぶし
+    arcs.append("path").attr("d", arc).attr("fill", function (d) { return d.data.color; });
+
+    // テキスト表示
+    arcs.append("text")
+        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+        .attr("text-anchor", "middle")
+        .attr("text-size", "10px")
+        .text(function(d) { return d.data.label + "(" + d.data.num + "頭)" });
+}
+
+</script>
+
+<style type="text/css">
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: #333333;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+}
+h1 {
+    width: 60%;
+    height: 50px;
+    color: #333333;
+    margin: auto;
+    text-align: center;
+    border-bottom: solid 3px #333333;
+}
+.title {
+    font-size: 20pt;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+a:hover {
+    color: #ff3333;
+    text-decoration: none;
+    border-bottom: solid 4px #667788;
+}
+
+#demo {
+    width: 400px;
+    margin: auto;
+}
+</style>
+
+</head>
+<body>
+    <h1>D3 デモ</h1>
+    <div id="demo">
+        <span class="title">全国犬・猫推計飼育頭数(2017)</span>
+    </div>
+    <a href="https://github.com/d3/d3/wiki/Gallery" target="_blank">公式のサンプルギャラリー</a>
+</body>
+</html>

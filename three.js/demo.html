@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>three.js デモ</title>
+
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="three.min.js"></script>
+
+<script>
+
+let camera, scene, renderer;
+let geometry, material, mesh;
+
+window.addEventListener("load", init, false);
+
+function init() {
+    threeInit();
+    animate();
+}
+
+function threeInit() {
+    const width = 800;
+    const height = 400;
+
+    // カメラ作成
+    camera = new THREE.PerspectiveCamera( 70, width / height, 0.01, 10 );
+    camera.position.z = 1;
+
+    // シーン作成
+    scene = new THREE.Scene();
+
+    // オブジェクト作成
+    geometry = new THREE.BoxGeometry( 0.1, 0.5, 0.5 );
+    material = new THREE.MeshNormalMaterial();
+
+    mesh = new THREE.Mesh( geometry, material );
+    
+    // オブジェクトを追加
+    scene.add( mesh );
+
+    // 表示
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setSize( width, height );
+    document.getElementById("demo").appendChild( renderer.domElement );
+
+}
+
+function animate() {
+    // アニメーション
+    requestAnimationFrame( animate );
+
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+
+    renderer.render( scene, camera );
+
+}
+
+</script>
+
+<style type="text/css">
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: #333333;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+}
+h1 {
+    width: 60%;
+    height: 50px;
+    color: #333333;
+    margin: auto;
+    text-align: center;
+    border-bottom: solid 3px #333333;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+a:hover {
+    color: #ff3333;
+    text-decoration: none;
+    border-bottom: solid 4px #667788;
+}
+
+#demo {
+    width: 800px;
+    margin: auto;
+}
+</style>
+
+</head>
+<body>
+    <h1>three.js デモ</h1>
+    <br>
+    <div id="demo"></div>
+    <a href="https://threejs.org/examples/" target="_blank">公式のサンプルギャラリー</a>
+</body>
+</html>

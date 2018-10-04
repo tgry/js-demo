@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Bootstrap デモ</title>
+
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<script src="./js/bootstrap.min.js"></script>
+
+<script>
+
+window.addEventListener("load", init, false);
+
+function init() {
+    
+}
+
+
+</script>
+
+<style type="text/css">
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+body {
+    padding: 0;
+    margin: 0;
+    color: #333333;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+}
+h1 {
+    width: 60%;
+    height: 50px;
+    color: #333333;
+    margin: auto;
+    text-align: center;
+    border-bottom: solid 3px #333333;
+}
+
+h2 {
+    height: 30px;
+    color: #333333;
+    padding-left: 10px;
+    font-size: 20pt;
+    border-left: solid 5px #333333;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+a:hover {
+    color: #ff3333;
+    text-decoration: none;
+    border-bottom: solid 4px #667788;
+}
+
+#demo {
+    margin: 10px;
+}
+</style>
+
+</head>
+<body>
+  <h1>Bootstrap デモ</h1>
+  <div id="demo">
+      <h2>ボタン</h2>
+      <button type="button" class="btn btn-primary">通常</button><br><br>
+      <button type="button" class="btn btn-outline-primary">アウトラインボタン</button></br><br>
+      <button type="button" class="btn btn-primary btn-lg">サイズ大</button></br><br>
+      <button type="button" class="btn btn-secondary">セカンダリカラー</button><br><br>
+      
+      <h2>ラジオボタン</h2>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-primary active">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> 選択肢1
+          </label>
+          <label class="btn btn-primary">
+              <input type="radio" name="options" id="option2" autocomplete="off"> 選択肢2
+          </label>
+          <label class="btn btn-primary">
+              <input type="radio" name="options" id="option3" autocomplete="off"> 選択肢3
+          </label>
+      </div>
+      <br><br>
+      
+      <h2>ドロップダウンボタン</h2>
+      <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ドロップダウンボタン
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">選択肢1</a>
+              <a class="dropdown-item" href="#">選択肢2</a>
+              <a class="dropdown-item" href="#">選択肢3</a>
+          </div>
+      </div>
+      <br><br>
+      
+      <h2>フォーム</h2>
+      <div class="form-group">
+          <label for="input_demo">アドレス</label>
+          <input type="email" class="form-control" id="input_demo" aria-describedby="emailHelp" placeholder="メールアドレスを入力">
+      </div>
+
+      <div class="form-group">
+          <label for="range_demo">レンジ</label>
+          <input type="range" class="form-control-range" id="range_demo">
+      </div>
+      
+      <label for="select_demo">セレクト</label>
+      <select class="form-control" id="select_demo">
+          <option>選択肢1</option>
+          <option>選択肢2</option>
+          <option>選択肢3</option>
+      </select>
+
+  </div>
+  <br><br>
+    <a href="http://getbootstrap.com/docs/4.1/examples/" target="_blank">公式のサンプルページ</a>
+</body>
+</html>

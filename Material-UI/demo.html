@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Material-UI デモ</title>
+
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: #333333;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+}
+h1 {
+    width: 60%;
+    height: 50px;
+    color: #333333;
+    margin: auto;
+    text-align: center;
+    border-bottom: solid 3px #333333;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+a:hover {
+    color: #ff3333;
+    text-decoration: none;
+    border-bottom: solid 4px #667788;
+}
+
+
+#demo {
+  margin: 10px;
+}
+</style>
+
+</head>
+<body>
+    <h1>Material-UI デモ</h1>
+    <div id="demo">
+    </div>
+    
+    <hr>
+    <a href="https://material-ui.com/demos/app-bar/" target="_blank">公式のデモ</a>
+
+    <script src="https://unpkg.com/react@latest/umd/react.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@material-ui/core/umd/material-ui.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <script type="text/babel">
+    const {
+      Button,
+      colors,
+      createMuiTheme,
+      CssBaseline,
+      MuiThemeProvider,
+      Typography,
+      withStyles,
+    } = window["material-ui"];
+
+    const theme = createMuiTheme({
+      palette: {
+        primary: {
+          light: colors.purple[300],
+          main: colors.purple[500],
+          dark: colors.purple[700],
+        }
+      },
+    });
+
+    const styles = theme => ({
+      root: {
+        textAlign: 'center'
+      },
+    });
+
+    class Index extends React.Component {
+      render() {
+        const { classes } = this.props;
+
+        return (
+          <MuiThemeProvider theme={theme}>
+            <div className={classes.root}>
+              <CssBaseline />
+              <Typography variant="subheading" gutterBottom>
+                デモ
+              </Typography>
+              <Button variant="raised" color="primary">
+                サンプルボタン
+              </Button>
+            </div>
+          </MuiThemeProvider>
+        );
+      }
+    }
+
+    const App = withStyles(styles)(Index);
+
+    ReactDOM.render(<App />, document.getElementById("demo"));
+    </script>
+</body>
+</html>
